@@ -1,1 +1,10 @@
-console.log("ola mundo");
+import { execSync } from "child_process";
+
+console.log("[DEPLOY _PREVIEW]: START");
+const command = "yarn deploy:staging";
+const output = execSync(command, { encoding: "utf-8" });
+console.log(output);
+console.log("[DEPLOY _PREVIEW]: END");
+
+// console.log("[GITHUB_COMMENT]: START");
+// console.log("[GITHUB_COMMENT]: END");
