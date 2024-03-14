@@ -12,10 +12,11 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "rm build ; next build ; mv ./out ./build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "next lint --fix"
+    "lint:fix": "next lint --fix",
+    "deploy:prod": "yarn build ; vercel ./build --confirm --no-clipboard --token=$VERCEL_TOKEN --prod"
   },
   "devDependencies": {
     "eslint": "8.57.0",
