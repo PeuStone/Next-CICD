@@ -1,4 +1,5 @@
 import { execSync } from "child_process";
+import fetch from "node-fetch";
 
 console.log("[DEPLOY _PREVIEW]: START");
 const command = "yarn deploy:staging";
@@ -13,7 +14,7 @@ console.log(`Você pode ver o preview do deploy em: ${DEPLOY_URL}`);
 // ===================================================================
 
 console.log("[GITHUB_COMMENT]: START");
-const { GITHUB_REPOSITORY, GITHUB_PR_NUMBER, GITHUB_TOKEN } = process.env;
+const { GITHUB_TOKEN, GITHUB_REPOSITORY, GITHUB_PR_NUMBER } = process.env;
 const GH_COMMENT = `
   - Deploy URL: [${DEPLOY_URL}](${DEPLOY_URL})
 `;
