@@ -1,5 +1,6 @@
 {
-  "name": "Next-CICD",
+  "name": "next-cicd",
+  "type": "module",
   "version": "1.0.0",
   "main": "index.js",
   "author": "PeuStone <pedrohmotaaa@gmail.com>",
@@ -7,6 +8,7 @@
   "dependencies": {
     "eslint-plugin-prettier": "^5.1.3",
     "next": "^14.1.3",
+    "node-fetch": "^3.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -16,7 +18,9 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "deploy:prod": "yarn build ; vercel ./build --confirm --no-clipboard --token=$VERCEL_TOKEN --prod"
+    "deploy:prod": "yarn deploy:staging --prod",
+    "deploy:staging": "yarn build ; vercel ./build --confirm --no-clipboard --token=$VERCEL_TOKEN ",
+    "deploy:preview": "node ./scripts/pullRequestPreview"
   },
   "devDependencies": {
     "eslint": "8.57.0",
