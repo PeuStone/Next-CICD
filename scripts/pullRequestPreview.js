@@ -1,22 +1,22 @@
 import { execSync } from "child_process";
 import fetch from "node-fetch";
 
-console.log("[DEPLOY _PREVIEW]: START");
+console.log("[DEPLOY_PREVIEW]: START");
 const command = "yarn deploy:staging";
-const output = execSync(command, { encoding: "utf-8" });
+const output = execSync(command, { encoding: "utf8" });
 const outputLines = output.split("\n");
 const DEPLOY_URL = outputLines[outputLines.length - 1];
-console.log("[DEPLOY _PREVIEW]: END");
+console.log("[DEPLOY_PREVIEW]: END");
 
-console.log(`Você pode ver o preview do deploy em: ${DEPLOY_URL}`);
+console.log(`You can see the deploy preview on: ${DEPLOY_URL}`);
 
-// ===================================================================
-// ===================================================================
+// ===================================
+// ===================================
 
 console.log("[GITHUB_COMMENT]: START");
 const { GITHUB_TOKEN, GITHUB_REPOSITORY, GITHUB_PR_NUMBER } = process.env;
 const GH_COMMENT = `
-  - Deploy URL: [${DEPLOY_URL}](${DEPLOY_URL})
+- Deploy URL: [${DEPLOY_URL}](${DEPLOY_URL})
 `;
 
 const defaultHeaders = {};
@@ -24,7 +24,6 @@ defaultHeaders["authorization"] = `token ${GITHUB_TOKEN}`;
 defaultHeaders["accept"] =
   "application/vnd.github.v3+json; application/vnd.github.antiope-preview+json";
 defaultHeaders["content-type"] = "application/json";
-defaultHeaders["X-GitHub-Api-Version"] = "2022-11-28";
 
 console.log("GITHUB_REPOSITORY", GITHUB_REPOSITORY);
 console.log("GITHUB_PR_NUMBER", GITHUB_PR_NUMBER);
