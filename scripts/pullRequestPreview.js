@@ -15,7 +15,7 @@ console.log(`Você pode ver o preview do deploy em: ${DEPLOY_URL}`);
 console.log("[GITHUB_COMMENT]: START");
 const { GITHUB_REPOSITORY, GITHUB_PR_NUMBER, GITHUB_TOKEN } = process.env;
 const GH_COMMENT = `
-  - Deploy URL: [${vercelUrl}](${vercelUrl})
+  - Deploy URL: [${DEPLOY_URL}](${DEPLOY_URL})
 `;
 
 const defaultHeaders = {};
