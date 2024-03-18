@@ -1,0 +1,16 @@
+name: "Cypress Testes E2E"
+
+on: 
+  push:
+    branches: ["main"]
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  testes: 
+    runs-on: windows-latest
+    steps: 
+      - uses: actions/checkout@v2 
+      - uses: cypress-io/github-action@v4 
+        with: 
+          browser: edge 
